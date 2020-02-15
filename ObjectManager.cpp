@@ -94,32 +94,3 @@ GameObject* ObjectManager::ColliderCheck(D3DXVECTOR2 position, D3DXVECTOR2 size,
 	}
 	return nullptr;
 }
-
-GameObject* ObjectManager::ColliderCheck(GameObject* obj, int layer)
-{
-	for (GameObject* inst : object_list)
-	{
-		if ((layer & inst->collider.layer) == 0)
-			continue;
-		if (inst->collider.enable == false)
-			continue;
-		if (inst->destroy)
-			continue;
-
-		RECT objRc, instRc;
-
-		objRc.left = obj->position.x;
-		objRc.right = obj->position.x + obj->collider.size.x;
-		objRc.top = obj->position.y;
-		objRc.bottom = obj->position.y + obj->collider.size.y;
-
-		instRc.left = inst->position.x;
-		instRc.right = inst->position.x + inst->collider.size.x;;
-		instRc.left = inst->position.y;
-		instRc.left = inst->position.y + inst->collider.size.y;
-
-		if (IntersectRect(NULL, &objRc, &instRc))
-			return inst;
-	}
-	return nullptr;
-}

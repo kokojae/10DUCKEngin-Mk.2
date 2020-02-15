@@ -40,8 +40,7 @@ GameObject* GameObject::PlaceMeeting(D3DXVECTOR2 vector, int layer)
 {
 	collider.enable = false;
 
-	//GameObject* inst = ObjectManager::ColliderCheck(position - collider.center + vector, collider.size, layer);
-	GameObject* inst = ObjectManager::ColliderCheck(this, layer);
+	GameObject* inst = ObjectManager::ColliderCheck(position - collider.center + vector, collider.size, layer);
 
 	collider.enable = true;
 
