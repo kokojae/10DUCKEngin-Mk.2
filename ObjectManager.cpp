@@ -101,6 +101,16 @@ GameObject* ObjectManager::ColliderCheck(D3DXVECTOR2 position, D3DXVECTOR2 size,
 		if (IntersectRect(&rc, &orc, &irc))
 			return inst;
 
+		// 임시객체의 포인터 주소를 놈겨도 실행이됨
+		//if (IntersectRect(&RECT(), &orc, &irc))
+		//	return inst;
+
+		// NULL또는 nullptr을 매개변수로 넘기면 실행이 되지않음
+		//if (IntersectRect(NULL, &orc, &irc))
+		//	return inst;
+		//if (IntersectRect(nullptr, &orc, &irc))
+		//	return inst;
+
 		//if (position.x < inst->position.x + inst->collider.size.x - inst->collider.center.x)
 		//if (position.x + size.x > inst->position.x - inst->collider.center.x)
 		//if (position.y < inst->position.y + inst->collider.size.y - inst->collider.center.y)
