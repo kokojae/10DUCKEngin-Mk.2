@@ -23,7 +23,7 @@ public:
 	static void Release();
 	static void Clear();
 
-	static GameObject* ObjectManager::ColliderCheck(D3DXVECTOR2 position, D3DXVECTOR2 size, int layer = Layer::DEFAULT);
+	static GameObject* ObjectManager::ColliderCheck(RECT* objRect, int layer = Layer::DEFAULT);
 };
 
 template<typename T>

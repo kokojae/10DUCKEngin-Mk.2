@@ -75,7 +75,7 @@ void ObjectManager::Clear()
 	}
 }
 
-GameObject* ObjectManager::ColliderCheck(D3DXVECTOR2 position, D3DXVECTOR2 size, int layer)
+GameObject* ObjectManager::ColliderCheck(RECT* objRect, int layer)
 {
 	for (GameObject* inst : object_list)
 	{
@@ -86,24 +86,13 @@ GameObject* ObjectManager::ColliderCheck(D3DXVECTOR2 position, D3DXVECTOR2 size,
 		if (inst->destroy)
 			continue;
 
-		RECT rc, orc, irc;
-
-		orc.left = position.x;
-		orc.right = position.x + size.x;
-		orc.top = position.y;
-		orc.bottom = position.y + size.x;
-
-		irc.left = inst->position.x - inst->collider.center.x;
-		irc.right = inst->position.x + inst->collider.size.x - inst->collider.center.x;
-		irc.top = inst->position.y - inst->collider.center.y;
-		irc.bottom = inst->position.y + inst->collider.size.y - inst->collider.center.y;
-
-		if (IntersectRect(&rc, &orc, &irc))
-			return inst;
-
-		// 임시객체의 포인터 주소를 놈겨도 실행이됨
-		//if (IntersectRect(&RECT(), &orc, &irc))
+		//if (IntersectRect(&rc, &orc, &irc))
 		//	return inst;
+
+		inst->SetRect();
+		// 임시객체의 포인터 주소를 놈겨도 실행이됨
+		if (IntersectRect(&RECT(), objRect, inst->rect))
+			return inst;
 
 		// NULL또는 nullptr을 매개변수로 넘기면 실행이 되지않음
 		//if (IntersectRect(NULL, &orc, &irc))

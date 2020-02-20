@@ -16,6 +16,7 @@ public:
 	bool destroy = false;
 	int z = 0;
 	bool destroy_me = true;
+	RECT* rect = nullptr;
 
 	virtual void Init();
 	virtual void Update();
@@ -32,6 +33,7 @@ public:
 
 	void SetTexture(std::wstring path, D3DXVECTOR2 texture_size);
 	void SetCollider(D3DXVECTOR2 size);
+	void SetRect(D3DXVECTOR2 vector = { 0,0 });
 };
 
 template<typename T>

@@ -29,6 +29,7 @@ void GameObject::Render()
 
 void GameObject::DestroyMe()
 {
+	delete rect;
 }
 
 void GameObject::DrawSelf()
@@ -40,7 +41,8 @@ GameObject* GameObject::PlaceMeeting(D3DXVECTOR2 vector, int layer)
 {
 	collider.enable = false;
 
-	GameObject* inst = ObjectManager::ColliderCheck(position - collider.center + vector, collider.size, layer);
+	SetRect(vector);
+	GameObject* inst = ObjectManager::ColliderCheck(rect, layer);
 
 	collider.enable = true;
 
@@ -60,4 +62,24 @@ void GameObject::SetCollider(D3DXVECTOR2 size)
 	collider.center = size / 2;
 
 	ObjectManager::collider_list.push_back(this);
+}
+
+void GameObject::SetRect(D3DXVECTOR2 vector)
+{
+	if (rect == nullptr)
+	{
+		rect = new RECT{
+			static_cast<LONG>((position - collider.center + vector).x),
+			static_cast<LONG>((position - collider.center + vector + collider.size).x),
+			static_cast<LONG>((position - collider.center + vector).y),
+			static_cast<LONG>((position - collider.center + vector + collider.size).y)
+		};
+	}
+	else
+	{
+		rect->left		= (position - collider.center + vector).x;
+		rect->right		= (position - collider.center + vector + collider.size).x;
+		rect->top		= (position - collider.center + vector).y;
+		rect->bottom	= (position - collider.center + vector + collider.size).y;
+	}
 }
