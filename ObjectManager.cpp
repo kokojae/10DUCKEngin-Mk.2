@@ -88,10 +88,9 @@ GameObject* ObjectManager::ColliderCheck(RECT* objRect, int layer)
 
 		//if (IntersectRect(&rc, &orc, &irc))
 		//	return inst;
-
-		inst->SetRect();
+		
 		// 임시객체의 포인터 주소를 놈겨도 실행이됨
-		if (IntersectRect(&RECT(), objRect, inst->rect))
+		if (IntersectRect(&RECT(), objRect, inst->GetRect()))
 			return inst;
 
 		// NULL또는 nullptr을 매개변수로 넘기면 실행이 되지않음
