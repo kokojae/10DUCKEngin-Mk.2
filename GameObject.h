@@ -16,7 +16,7 @@ public:
 	bool destroy = false;
 	int z = 0;
 	bool destroy_me = true;
-	RECT* rect = nullptr;
+	RECT* rect = new RECT();
 
 	virtual void Init();
 	virtual void Update();

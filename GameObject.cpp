@@ -66,22 +66,10 @@ void GameObject::SetCollider(D3DXVECTOR2 size)
 
 void GameObject::SetRect(D3DXVECTOR2 vector)
 {
-	if (rect == nullptr)
-	{
-		rect = new RECT{
-			static_cast<LONG>((position - collider.center + vector).x),
-			static_cast<LONG>((position - collider.center + vector + collider.size).x),
-			static_cast<LONG>((position - collider.center + vector).y),
-			static_cast<LONG>((position - collider.center + vector + collider.size).y)
-		};
-	}
-	else
-	{
-		rect->left		= (position - collider.center + vector).x;
-		rect->right		= (position - collider.center + vector + collider.size).x;
-		rect->top		= (position - collider.center + vector).y;
-		rect->bottom	= (position - collider.center + vector + collider.size).y;
-	}
+	rect->left		= (position - collider.center + vector).x;
+	rect->right		= (position - collider.center + vector + collider.size).x;
+	rect->top		= (position - collider.center + vector).y;
+	rect->bottom	= (position - collider.center + vector + collider.size).y;
 }
 
 RECT* GameObject::GetRect(D3DXVECTOR2 vector)
