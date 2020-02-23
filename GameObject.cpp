@@ -64,16 +64,11 @@ void GameObject::SetCollider(D3DXVECTOR2 size)
 	ObjectManager::collider_list.push_back(this);
 }
 
-void GameObject::SetRect(D3DXVECTOR2 vector)
-{
-	rect->left		= (position - collider.center + vector).x;
-	rect->right		= (position - collider.center + vector + collider.size).x;
-	rect->top		= (position - collider.center + vector).y;
-	rect->bottom	= (position - collider.center + vector + collider.size).y;
-}
-
 RECT* GameObject::GetRect(D3DXVECTOR2 vector)
 {
-	SetRect(vector);
+	rect->left = (position - collider.center + vector).x;
+	rect->right = (position - collider.center + vector + collider.size).x;
+	rect->top = (position - collider.center + vector).y;
+	rect->bottom = (position - collider.center + vector + collider.size).y;
 	return rect;
 }

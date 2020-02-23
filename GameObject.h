@@ -33,7 +33,6 @@ public:
 
 	void SetTexture(std::wstring path, D3DXVECTOR2 texture_size);
 	void SetCollider(D3DXVECTOR2 size);
-	void SetRect(D3DXVECTOR2 vector = { 0,0 });
 
 	RECT* GetRect(D3DXVECTOR2 vector = { 0,0 });
 };
