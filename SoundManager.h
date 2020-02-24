@@ -15,10 +15,7 @@ public:
 
 	static void Init();
 
-	static void PlayBGM(std::wstring path);
-	static void StopBGM();
-	static void EndBGM();
-
-	static void PlaySFX(std::wstring path);
+	static void PlaySFX(std::wstring path, bool isBGM = false);
+	static void EndSFX();
 };
 

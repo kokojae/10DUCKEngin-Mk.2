@@ -29,7 +29,7 @@ void SceneManager::LoadScene(Scene scene, bool camera_clear)
 	switch (scene)
 	{
 	case SceneManager::Scene::Main:
-		SoundManager::PlayBGM(L"Source/test.wav");
+		SoundManager::PlaySFX(L"Source/test.wav", true);
 
 		ObjectManager::Instantiate<UIImage>({ 1200,660 })->z = 10;	// 드로우 우선순위 설정
 

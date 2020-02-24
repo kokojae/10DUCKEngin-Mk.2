@@ -21,25 +21,17 @@ void SoundManager::Init()
 	soundManager->SetPrimaryBufferFormat(2, 22050, 16);
 }
 
-void SoundManager::PlayBGM(std::wstring path)
+void SoundManager::PlaySFX(std::wstring path, bool isBGM)
 {
 	soundManager->Create(&sound, const_cast<wchar_t*>(path.c_str()), 0, GUID_NULL);
-	sound->Play(0, DSBPLAY_LOOPING);
+	if (isBGM)
+		sound->Play(0, DSBPLAY_LOOPING);
+	else
+		sound->Play(0, NULL);
 }
 
-void SoundManager::StopBGM()
-{
-	sound->Stop();
-}
-
-void SoundManager::EndBGM()
+void SoundManager::EndSFX()
 {
 	sound->Stop();
 	sound->Reset();
-}
-
-void SoundManager::PlaySFX(std::wstring path)
-{
-	soundManager->Create(&sound, const_cast<wchar_t*>(path.c_str()), 0, GUID_NULL);
-	sound->Play(0, NULL);
 }
