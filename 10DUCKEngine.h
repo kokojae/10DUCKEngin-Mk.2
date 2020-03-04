@@ -28,5 +28,8 @@
 #include "SoundManager.h"
 #include "TextureManager.h"
 
+//�ܼ�â ����
+#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console") 
+
 #define COLOR(a,r,g,b) (D3DCOLOR_ARGB(a, r, g, b))
 #define TRANSPARENCY_COLOR(a) (D3DCOLOR_ARGB(a, 128, 128, 128))
