@@ -23,12 +23,13 @@
 #include "Camera.h"
 #include "GraphicManager.h"
 #include "Layer.h"
+#include "MouseInput.h"
 #include "ObjectManager.h"
 #include "SceneManager.h"
 #include "SoundManager.h"
 #include "TextureManager.h"
 
-//ï¿½Ü¼ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½
+//ÄÜ¼ÖÃ¢ ¶ç¿ì±â
 #pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console") 
 
 #define COLOR(a,r,g,b) (D3DCOLOR_ARGB(a, r, g, b))

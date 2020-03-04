@@ -140,6 +140,9 @@
     <ClCompile Include="Layer.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
+    <ClCompile Include="MouseInput.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">
@@ -201,6 +204,9 @@
       <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="Layer.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseInput.h">
       <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -68,6 +68,7 @@ void CALLBACK OnFrameMove( double fTime, float fElapsedTime, void* pUserContext 
     // 업데이트
     ObjectManager::Update();
     ObjectManager::LateUpdate();
+    MouseInput::Update();
 }
 
 
@@ -122,6 +123,27 @@ void CALLBACK OnD3D9DestroyDevice( void* pUserContext )
 
 
 //--------------------------------------------------------------------------------------
+// Mouse CallBack Proc
+//--------------------------------------------------------------------------------------
+void CALLBACK MouseProc(bool LBtn, bool RBtn, bool MBtn,
+                        bool SBtn1, bool SBtn2, int Wheel,
+                        int xPos, int yPos, void* userContext)
+{
+    MouseInput::lBtn = LBtn;
+    MouseInput::rBtn = RBtn;
+    MouseInput::mBtn = MBtn;
+    MouseInput::sBtn1 = SBtn1;
+    MouseInput::sBtn2 = SBtn2;
+    MouseInput::wheel = Wheel;
+    MouseInput::pos = {
+        static_cast<float>(xPos) - SCREEN_WIDTH / 2,
+        static_cast<float>(yPos) - SCREEN_HEIGHT / 2
+    };
+    MouseInput::pos += Camera::position;
+}
+
+
+//--------------------------------------------------------------------------------------
 // Initialize everything and go into a render loop
 // 모든 것을 초기화하고 렌더 루프로 이동
 //--------------------------------------------------------------------------------------
@@ -144,6 +166,7 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
     DXUTSetCallbackDeviceChanging( ModifyDeviceSettings );
     DXUTSetCallbackMsgProc( MsgProc );
     DXUTSetCallbackFrameMove( OnFrameMove );
+    DXUTSetCallbackMouse( MouseProc );
 
     // TODO: Perform any application-level initialization here
     // TODO : 모든 애플리케이션 레벨 초기화를 수행하십시오.

@@ -394,6 +394,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="Layer.cpp" />
+    <ClCompile Include="MouseInput.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -412,6 +413,7 @@
     <ClInclude Include="DXUT\Optional\SDKwavefile.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Layer.h" />
+    <ClInclude Include="MouseInput.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SceneManager.h" />

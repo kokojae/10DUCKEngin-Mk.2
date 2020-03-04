@@ -26,6 +26,8 @@ void Player::Update()
 	GetKey();
 	Hspeed();
 	Gravity();
+
+	isClicked(MouseInput::lBtn);
 }
 
 void Player::LateUpdate()
@@ -61,11 +63,6 @@ void Player::GetKey()
 			vspeed = -15;
 		}
 	}
-
-	if (GetAsyncKeyState('W'))
-		Camera::scale -= Camera::scale * 0.2;
-	if (GetAsyncKeyState('S'))
-		Camera::scale += Camera::scale * 0.2;
 	if (GetAsyncKeyState('D'))
 		Camera::rotation += 5;
 	if (GetAsyncKeyState('A'))

@@ -49,6 +49,20 @@ GameObject* GameObject::PlaceMeeting(D3DXVECTOR2 vector, int layer)
 	return inst;
 }
 
+bool GameObject::isClicked(bool musBtn)
+{
+	if (!musBtn)
+		return false;
+	else
+	{
+		bool res = IntersectRect(&RECT(), GetRect(), MouseInput::GetRect());
+		printf("object) L : %.ld, T : %.ld, R : %.ld, B : %.ld\n", rect->left, rect->top, rect->right, rect->bottom);
+		printf("mouse)  L : %.ld, T : %.ld, R : %.ld, B : %.ld\n", MouseInput::GetRect()->left, MouseInput::GetRect()->top, MouseInput::GetRect()->right, MouseInput::GetRect()->bottom);
+		printf("res : %d\n", res);
+		return res;
+	}
+}
+
 void GameObject::SetTexture(std::wstring path, D3DXVECTOR2 texture_size)
 {
 	texture.texture = TextureManager::LoadTexture(path);

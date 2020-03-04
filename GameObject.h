@@ -30,6 +30,7 @@ public:
 	T* Instantiate(D3DXVECTOR2 position);
 
 	GameObject* PlaceMeeting(D3DXVECTOR2 vector, int layer = Layer::DEFAULT);
+	bool isClicked(bool musBtn);
 
 	void SetTexture(std::wstring path, D3DXVECTOR2 texture_size);
 	void SetCollider(D3DXVECTOR2 size);
