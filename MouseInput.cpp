@@ -32,7 +32,7 @@ RECT* MouseInput::GetRect()
 	LONG x = static_cast<LONG>(pos.x);
 	LONG y = static_cast<LONG>(pos.y);
 
-	rc = { x,y,x,y };
+	rc = { x - 1,y - 1,x + 1,y + 1 };
 
 	return &rc;
 }
