@@ -4,7 +4,7 @@
 #include "SDKsound.h"
 
 CSoundManager* SoundManager::soundManager = nullptr;
-CSound* SoundManager::sound = nullptr;
+std::map<std::wstring, CSound*> SoundManager::sound_map = std::map<std::wstring, CSound*>();
 
 SoundManager::SoundManager()
 {
@@ -21,17 +21,45 @@ void SoundManager::Init()
 	soundManager->SetPrimaryBufferFormat(2, 22050, 16);
 }
 
-void SoundManager::PlaySFX(std::wstring path, bool isBGM)
+CSound* SoundManager::SearchSFX(std::wstring path)
 {
-	soundManager->Create(&sound, const_cast<wchar_t*>(path.c_str()), 0, GUID_NULL);
-	if (isBGM)
-		sound->Play(0, DSBPLAY_LOOPING);
+	CSound* SFX;
+
+	if (sound_map.count(path))
+	{
+		SFX = sound_map.find(path)->second;
+	}
 	else
-		sound->Play(0, NULL);
+	{
+		soundManager->Create(&SFX, const_cast<wchar_t*>(path.c_str()), 0, GUID_NULL);
+
+		sound_map[path] = SFX;
+	}
+
+	return SFX;
 }
 
-void SoundManager::EndSFX()
+void SoundManager::PlaySFX(std::wstring path, bool isBGM)
 {
-	sound->Stop();
-	sound->Reset();
+	CSound* SFX = SearchSFX(path);
+	
+	if (!SFX->IsSoundPlaying())
+	{
+		if (isBGM)
+			SFX->Play(0, DSBPLAY_LOOPING);
+		else
+			SFX->Play(0, NULL);
+	}
+
+	return;
+}
+
+void SoundManager::EndSFX(std::wstring path)
+{
+	if (sound_map.count(path))
+	{
+		sound_map.find(path)->second->Stop();
+		sound_map.find(path)->second->Reset();
+	}
+	return;
 }

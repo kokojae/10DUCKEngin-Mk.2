@@ -26,8 +26,6 @@ void Player::Update()
 	GetKey();
 	Hspeed();
 	Gravity();
-
-	isClicked(MouseInput::lBtn);
 }
 
 void Player::LateUpdate()
@@ -67,6 +65,15 @@ void Player::GetKey()
 		Camera::rotation += 5;
 	if (GetAsyncKeyState('A'))
 		Camera::rotation -= 5;
+
+	if (GetAsyncKeyState('Z'))
+	{
+		SoundManager::PlaySFX(L"Source/test.wav", true);
+	}
+	if (GetAsyncKeyState('X'))
+	{
+		SoundManager::EndSFX(L"Source/test.wav");
+	}
 }
 
 void Player::Hspeed()

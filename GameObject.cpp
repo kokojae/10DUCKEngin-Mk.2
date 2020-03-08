@@ -55,11 +55,7 @@ bool GameObject::isClicked(bool musBtn)
 		return false;
 	else
 	{
-		bool res = IntersectRect(&RECT(), GetRect(), MouseInput::GetRect());
-		printf("object) L : %.ld, T : %.ld, R : %.ld, B : %.ld\n", rect->left, rect->top, rect->right, rect->bottom);
-		printf("mouse)  L : %.ld, T : %.ld, R : %.ld, B : %.ld\n", MouseInput::GetRect()->left, MouseInput::GetRect()->top, MouseInput::GetRect()->right, MouseInput::GetRect()->bottom);
-		printf("res : %d\n", res);
-		return res;
+		return IntersectRect(&RECT(), GetRect(), MouseInput::GetRect());
 	}
 }
 
