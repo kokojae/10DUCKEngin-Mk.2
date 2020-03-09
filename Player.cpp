@@ -74,6 +74,10 @@ void Player::GetKey()
 	{
 		SoundManager::EndSFX(L"Source/test.wav");
 	}
+	if (GetAsyncKeyState('C'))
+	{
+		SoundManager::EndAllSFX();
+	}
 }
 
 void Player::Hspeed()

@@ -64,3 +64,15 @@ void SoundManager::EndSFX(std::wstring path)
 	}
 	return;
 }
+
+void SoundManager::EndAllSFX()
+{
+	std::map<std::wstring, CSound*>::iterator it = sound_map.begin();
+
+	while (it != sound_map.end())
+	{
+		it->second->Stop();
+		it->second->Reset();
+		it++;
+	}
+}

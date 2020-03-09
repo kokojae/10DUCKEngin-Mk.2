@@ -19,5 +19,6 @@ public:
 	static CSound* SearchSFX(std::wstring path);
 	static void PlaySFX(std::wstring path, bool isBGM = false);
 	static void EndSFX(std::wstring path);
+	static void EndAllSFX();
 };
 
