@@ -25,6 +25,7 @@ void SceneManager::LoadScene(Scene scene, bool camera_clear)
 	}
 
 	ObjectManager::Clear();
+	SoundManager::EndAllSFX();
 
 	switch (scene)
 	{
